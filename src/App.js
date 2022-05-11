@@ -9,11 +9,10 @@ function App() {
   const userLoggedInInformation = localStorage.getItem('isLoggedIn');
 
   useEffect(()=>{
-    console.log('useEffect');
     if(userLoggedInInformation === '1'){
       setIsLoggedIn(true);
     }
-  },[userLoggedInInformation]);
+  },[]);
 
   const loginHandler = (email, password) => {
     // We should of course check email and password
@@ -26,7 +25,7 @@ function App() {
     localStorage.removeItem('isLoggedIn');
     setIsLoggedIn(false);
   };
-
+  
   return (
     <React.Fragment>
       <MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler} />
