@@ -12,16 +12,13 @@ const Login = (props) => {
   const [formIsValid, setFormIsValid] = useState(false);
 
   useEffect(() => {
-    const identifier = setTimeout(()=>{
-      console.log('inside settimeOut');
+    const identifier = setTimeout(() => {
       setFormIsValid(
         enteredEmail.includes("@") && enteredPassword.trim().length > 6
       );
-    },500);
-    
+    }, 500);
 
     return () => {
-      console.log('inside return function');
       clearTimeout(identifier);
     };
   }, [enteredEmail, enteredPassword]);
@@ -32,10 +29,6 @@ const Login = (props) => {
 
   const passwordChangeHandler = (event) => {
     setEnteredPassword(event.target.value);
-
-    // setFormIsValid(
-    //   event.target.value.trim().length > 6 && enteredEmail.includes('@')
-    // );
   };
 
   const validateEmailHandler = () => {
