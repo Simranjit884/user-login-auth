@@ -9,7 +9,7 @@ const emailReducer = (state, action) => {
     return {value: action.val, isValid: action.val.includes('@')};
   }
   if(action.type === 'BLUR_FOCUS') {
-    return {value: state, isValid: undefined};
+    return {value: state.value, isValid: state.value.includes('@')};
   }
   return {value: '', isValid: false};
 };
@@ -33,7 +33,7 @@ const Login = (props) => {
   //   };
   // }, [enteredEmail, enteredPassword]);
 
-  const [emailState, dispatchEmail] = useReducer(emailReducer, {value: '', isValid: false});
+  const [emailState, dispatchEmail] = useReducer(emailReducer, {value: '', isValid: null});
 
   const emailChangeHandler = (event) => {
     // setEnteredEmail(event.target.value);
